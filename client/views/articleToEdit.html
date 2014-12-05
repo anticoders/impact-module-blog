@@ -1,0 +1,7 @@
+<template name="blog_articleToEdit">
+  {{#admin}}
+    {{#with article}}
+      <a href="{{pathFor 'blog_edit'}}">Edit</a>
+    {{/with}}
+  {{/admin}}
+</template>

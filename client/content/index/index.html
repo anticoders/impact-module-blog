@@ -1,0 +1,39 @@
+<template name="blog_dashboard">
+
+
+  <h1 class="ui header">
+    {{m.name.toUpperCase}}: list articles
+  </h1>
+
+    <!-- <div class="adminTabs"> -->
+      <!-- <a href="/blog/edit" class="adminTabButton">New article</a> -->
+      <!-- <a href="{{pathFor 'blog_dashboard' published=true}}" class="adminTab">Published</a> -->
+      <!-- <a href="{{pathFor 'blog_dashboard' published=false}}" class="adminTab">Unpublished</a> -->
+    <!-- </div> -->
+  
+
+  <div class="ui menu">
+
+      <div class="item">
+        <a href="{{mPathFor 'new'}}" class="ui basic labeled icon blue button">
+          <i class="plus icon"></i>
+          New article
+        </a>
+      </div>
+
+  </div>
+
+  <div class="ui divider"></div>
+
+  <div class="ui divided items">
+    {{#each articles}}
+      <a href="{{mPathFor 'edit'}}" class="item">
+        <div class="content">
+          <div class="header">{{or title "[UNTITLED]"}}</div>
+          <div class="meta">{{date createdAt}}</div>
+        </div>
+      </a>
+    {{/each}}
+  </div>
+
+</template>

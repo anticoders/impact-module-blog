@@ -1,0 +1,14 @@
+<template name="blog_article">
+
+  {{#with article}}
+    <div>
+      <small class="text-muted">{{date createdAt}}</small>
+      <h1>{{#markdown}}{{title}}{{/markdown}}</h1>
+      <p class="lead">{{#markdown}}{{{summary}}}{{/markdown}}</p>
+      <hr/>
+      <div>{{#markdown}}{{{content}}}{{/markdown}}</div>
+
+    </div>
+  {{/with}}
+
+</template>

@@ -1,0 +1,17 @@
+<template name="blog_list">
+
+  <div class="ui items">
+    {{#each articles}}
+      <div class="item">
+        <a href="{{mPathFor 'article'}}">
+          <div>
+            <small class="text-muted">{{date publishedAt}}</small>
+            <h3>{{#markdown}}{{title}}{{/markdown}}</h3>
+            <p>{{#markdown}}{{summary}}{{/markdown}}</p>
+          </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
+
+</template>

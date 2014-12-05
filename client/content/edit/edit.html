@@ -1,0 +1,87 @@
+<template name="blog_edit">
+
+  <h1 class="ui header">
+    {{m.name.toUpperCase}}: edit article
+  </h1>
+
+  <h2 class="ui header">
+    {{article.title}}
+  </h2>
+
+  <div class="ui menu">
+
+    {{#if article.published}}
+      <div class="item">
+        <i class="green checkmark icon"></i>
+        Published
+      </div>
+      <div class="item">
+        <button class="ui mini button __unpublish">Unpublish</button>
+      </div>
+    {{else}}
+      <div class="item">
+        <i class="black minus icon"></i>
+        Not published
+      </div>
+      <div class="item">
+        <button class="ui mini green button __publish">Publish</button>
+      </div>
+    {{/if}}
+      
+
+    <div class="right menu">
+      <div class="item">
+        <button class="ui mini basic red button">Remove</button>
+      </div>
+    </div>
+
+  </div>
+
+
+  {{#autoForm id="blog_edit_autoform" schema=schema doc=article class="ui form"}}
+    {{> afQuickField name="title"       class="__trigger" template="semantic"}}
+    {{> afQuickField name="seo"         class="__trigger" template="semantic"}}
+    {{> afQuickField name="summary"     class="__trigger" template="semantic" type="textarea"}}
+    {{> afQuickField name="content"     class="__trigger" template="semantic" type="textarea"}}
+  {{/autoForm}}
+
+</template>
+
+
+<template name="blog_edit_etc">
+    <div class="zenBox">
+      <div class="zenMenuArea">
+        Published: <span class="crater-toggle blog_edit_publishedField" data-value="{{#if published}}true{{else}}false{{/if}}"></span><br/>
+        Seo: <input type="text" class="blog_edit_trigger" id="blog_edit_seoField" placeholder="seo" value="{{seo}}">
+      </div>
+      <input class="zenTitleInput blog_edit_trigger" type="text" value="{{title}}" id="blog_edit_titleField" placeholder="title"/>
+      <hr class="zenLine"/>
+      <!-- <hr class="zenLine"/> -->
+      <textarea class="zenTextarea zenTextareaSmaller blog_edit_trigger" id="blog_edit_summaryField" placeholder="summary">{{summary}}</textarea>
+      <hr class="zenLine"/>
+      <textarea class="zenTextarea blog_edit_trigger" id="blog_edit_contentField" placeholder="the article content should go here">{{content}}</textarea>
+    </div>
+
+
+
+
+    <div class="zenBar">
+      <div class="zenBarInner">
+
+        <span class="zenLeft">
+          <a href="{{pathFor 'blog_dashboard'}}" class="zenButton" title="Article list"><i class="fa fa-times"></i></a>
+          <a href="{{pathFor 'blog_article'}}" class="zenButton" title="Preview article"><i class="fa fa-eye"></i></a>
+          <span class="zenButton blog_edit_addMediaButton" title="Add media"><i class="fa fa-picture-o"></i></span>
+        </span>
+
+        <span class="zenRight">
+          {{#constant}}
+          <span class="zenButton blog_edit_savingButton"></span>
+          {{/constant}}
+        </span>
+      
+      </div>
+    </div>
+</template>
+
+
